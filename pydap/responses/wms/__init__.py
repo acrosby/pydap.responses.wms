@@ -30,6 +30,7 @@ from pydap.util.template import GenshiRenderer, StringLoader, TemplateNotFound
 from pydap.util.safeeval import expr_eval
 from pydap.lib import walk, encode_atom
 
+print "completed all wms import statements" 
 
 WMS_ARGUMENTS = ['request', 'bbox', 'cmap', 'layers', 'width', 'height', 'transparent', 'time']
 
@@ -481,8 +482,10 @@ def fix_data(data, attrs):
     elif '_FillValue' in attrs:
         data = np.ma.masked_equal(data, attrs['_FillValue'])
 
-    if attrs.get('scale_factor'): data *= attrs['scale_factor']
-    if attrs.get('add_offset'): data += attrs['add_offset']
+    if attrs.get('scale_factor'): 
+        data = data * attrs['scale_factor']
+    if attrs.get('add_offset'):
+        data = data + attrs['add_offset']
 
     while len(data.shape) > 2:
         ##data = data[0]

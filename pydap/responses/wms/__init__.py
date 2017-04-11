@@ -306,13 +306,13 @@ class WMSResponse(BaseResponse):
             # Retrieve only the data for the request bbox, and at the 
             # optimal resolution (avoiding oversampling).
             if len(lon.shape) == 1:
-                i0, i1 = find_containing_bounds(lon, bbox[0], bbox[2])
-                j0, j1 = find_containing_bounds(lat, bbox[1], bbox[3])
-                istep = max(1, np.floor( (len(lon) * (bbox[2]-bbox[0])) / (w * abs(lon[-1]-lon[0])) ))
-                jstep = max(1, np.floor( (len(lat) * (bbox[3]-bbox[1])) / (h * abs(lat[-1]-lat[0])) ))
-                lons = lon[i0:i1:istep]
-                lats = lat[j0:j1:jstep]
-                data = np.asarray(grid.array[...,j0:j1:jstep,i0:i1:istep])
+                #i0, i1 = find_containing_bounds(lon, bbox[0], bbox[2])
+                #j0, j1 = find_containing_bounds(lat, bbox[1], bbox[3])
+                #istep = max(1, np.floor( (len(lon) * (bbox[2]-bbox[0])) / (w * abs(lon[-1]-lon[0])) ))
+                #jstep = max(1, np.floor( (len(lat) * (bbox[3]-bbox[1])) / (h * abs(lat[-1]-lat[0])) ))
+                lons = loni #[i0:i1:istep]
+                lats = lat #[j0:j1:jstep]
+                data = np.asarray(grid.array[...])#,j0:j1:jstep,i0:i1:istep])
 
                 # Fix cyclic data.
                 if cyclic:

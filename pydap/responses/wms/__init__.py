@@ -310,7 +310,7 @@ class WMSResponse(BaseResponse):
                 #j0, j1 = find_containing_bounds(lat, bbox[1], bbox[3])
                 #istep = max(1, np.floor( (len(lon) * (bbox[2]-bbox[0])) / (w * abs(lon[-1]-lon[0])) ))
                 #jstep = max(1, np.floor( (len(lat) * (bbox[3]-bbox[1])) / (h * abs(lat[-1]-lat[0])) ))
-                lons = loni #[i0:i1:istep]
+                lons = lon #[i0:i1:istep]
                 lats = lat #[j0:j1:jstep]
                 data = np.asarray(grid.array[...])#,j0:j1:jstep,i0:i1:istep])
 
